@@ -1,3 +1,0 @@
-[submodule "models/thenlper/gte-small-zh"]
-	path = models/thenlper/gte-small-zh
-	url = https://huggingface.co/thenlper/gte-small-zh
