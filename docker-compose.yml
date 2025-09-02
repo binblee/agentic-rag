@@ -1,0 +1,12 @@
+services:
+  agentic-rag-demo:
+    build: .
+    image: registry.cn-hangzhou.aliyuncs.com/jingshanlb/agentic-rag-demo:latest
+    env_file: ".env"
+    ports:
+      - "7860:7860"
+      - "8000:8000"
+    environment:
+      - GRADIO_SERVER_NAME=0.0.0.0
+      - GRADIO_SERVER_PORT=7860
+    restart: unless-stopped
