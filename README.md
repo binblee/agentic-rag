@@ -13,6 +13,9 @@ An intelligent document retrieval system that combines retrieval-augmented gener
 ### Installation
 
 ```bash
+# Init and update submodule(gte-small-zh embedding)
+git submodule update --init
+
 # Install dependencies with UV
 uv sync
 
