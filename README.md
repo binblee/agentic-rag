@@ -1,7 +1,5 @@
 # Agentic RAG Demo
 
-An intelligent document retrieval system that combines retrieval-augmented generation (RAG) with agentic AI capabilities. The system uses FAISS for vector storage, HuggingFace embeddings for semantic search, and supports multiple languages with automatic language detection.
-
 ## Quick Start
 
 ### Prerequisites
@@ -24,20 +22,13 @@ cp .env.example .env
 # Edit .env and add your DASHSCOPE_API_KEY
 ```
 
-## 1. Build Index
-
-### Prepare Documents
+### Build Index
 
 Place your text documents in the `texts/` directory:
 
 ```bash
 mkdir -p texts/
 # Add your .txt files to the texts/ directory
-```
-
-### Build Vector Database
-
-```bash
 # Build the FAISS index from documents
 uv run build_index.py
 ```
@@ -48,15 +39,11 @@ This will:
 - Generate embeddings using `thenlper/gte-small` model
 - Save the FAISS index to `faiss_index/`
 
-### Load Existing Index
-
 If you have a pre-built index, place it in the project directory and the system will automatically load it.
 
-## 2. Run Demo
+### Run Demo
 
-### Local Development
-
-#### FastAPI Server
+#### Local Development
 
 ```bash
 # Start the FastAPI server
@@ -66,7 +53,7 @@ uv run app.py
 The API will be available at `http://localhost:8000`
 
 
-### Docker Deployment
+#### Docker Deployment
 
 ```bash
 # Build and run with docker-compose
@@ -77,9 +64,7 @@ docker build -t agentic-rag .
 docker run -p 7860:7860 -e DASHSCOPE_API_KEY=your_key_here agentic-rag
 ```
 
-## 3. API Documentation
-
-APIs for multi-session management:
+## API Documentation
 
 ### Base URL
 `http://localhost:8000`
@@ -222,9 +207,15 @@ http get :8000/sessions \
 | `OPENAI_API_URL` | API endpoint | `https://dashscope.aliyuncs.com/compatible-mode/v1` |
 | `API_KEYS` | Comma-separated list of valid API keys for authentication (format: "key1:user1,key2:user2") | `default-api-key:default-user` |
 
-## 4. Unit Test
+## Unit Test
 Run unit test, all calls to LLM are mocked.
 
 ```bash
+uv run run_tests.py
+# or
 uv run pytest
 ```
+
+## References
+[https://huggingface.co/learn/cookbook/agent_rag](https://huggingface.co/learn/cookbook/agent_rag)
+
